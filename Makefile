@@ -2,7 +2,7 @@ REBAR := $(shell echo `pwd`/rebar)
 ELIXIRC := bin/elixirc --ignore-module-conflict $(ELIXIRC_OPTS)
 ERLC := erlc -I lib/elixir/include
 ERL := erl -I lib/elixir/include -noshell -pa lib/elixir/ebin
-VERSION := 0.8.0.dev
+VERSION := $(strip $(shell cat VERSION))
 INSTALL_PATH := /usr/local
 
 .PHONY: install compile erlang elixir dialyze test clean docs release_docs release_zip release_erl
@@ -33,10 +33,6 @@ UNICODE:=lib/elixir/ebin/Elixir-String-Unicode.beam
 default: compile
 
 compile: lib/elixir/src/elixir.app.src erlang elixir
-
-lib/elixir/src/elixir.app.src: src/elixir.app.src
-	@ rm -rf lib/elixir/src/elixir.app.src
-	@ cp src/elixir.app.src lib/elixir/src/elixir.app.src
 
 erlang:
 	@ cd lib/elixir && $(REBAR) compile
@@ -86,7 +82,6 @@ clean:
 	rm -rf lib/*/test/tmp
 	rm -rf lib/mix/test/fixtures/git_repo
 	rm -rf lib/*/tmp
-	rm -rf lib/elixir/src/elixir.app.src
 	rm -rf lib/elixir/src/*_lexer.erl
 	rm -rf lib/elixir/src/*_parser.erl
 	rm -rf lib/elixir/test/ebin
