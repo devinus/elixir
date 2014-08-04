@@ -28,6 +28,9 @@ integer_div_test() ->
   {0.5,[]} = eval("1 / 2"),
   {2.0,[]} = eval("4 / 2").
 
+integer_exp_test() ->
+  {8.0,[]} = eval("2 ** 3").
+
 integer_div_rem_test() ->
   {2,[]} = eval("div 5, 2"),
   {1,[]} = eval("rem 5, 2").
@@ -35,6 +38,9 @@ integer_div_rem_test() ->
 integer_mult_div_test() ->
   {1.0,[]} = eval("2*1/2"),
   {6.0,[]} = eval("3 * 4 / 2").
+
+integer_mult_exp_test() ->
+  {16.0,[]} = eval("2 * 2 ** 3").
 
 integer_without_parens_test() ->
   {17,[]}  = eval("3 * 5 + 2"),

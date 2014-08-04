@@ -39,6 +39,7 @@ unquoted_atom_test() ->
   [{atom, 1, '*'}] = tokenize(":*"),
   [{atom, 1, '/'}] = tokenize(":/"),
   [{atom, 1, '='}] = tokenize(":="),
+  [{atom, 1, '**'}] = tokenize(":**"),
   [{atom, 1, '&&'}] = tokenize(":&&").
 
 quoted_atom_test() ->

@@ -17,7 +17,8 @@ atom_with_punctuation_test() ->
   {'...',[]} = eval(":...").
 
 atom_quoted_call_test() ->
-  {3,[]} = eval("Kernel.'+'(1, 2)").
+  {3,[]} = eval("Kernel.'+'(1, 2)"),
+  {4,[]} = eval("Kernel.'**'(2, 2)").
 
 kv_with_quotes_test() ->
   {'foo bar',[]} = eval(":atom_test.kv(\"foo bar\": nil)").
